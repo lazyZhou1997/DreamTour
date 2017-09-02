@@ -1,4 +1,4 @@
-package edu.scu.dreamTour.bean;
+package edu.scu.dreamTour.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;

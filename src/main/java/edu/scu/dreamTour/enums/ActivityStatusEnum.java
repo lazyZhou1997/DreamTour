@@ -1,6 +1,5 @@
 package edu.scu.dreamTour.enums;
 
-import sun.reflect.generics.repository.GenericDeclRepository;
 
 /**
  * @Author: 周秦春
@@ -47,4 +46,5 @@ public enum ActivityStatusEnum {
     public void setName(String name) {
         this.name = name;
     }
+
 }

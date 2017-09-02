@@ -1,4 +1,4 @@
-package edu.scu.dreamTour.bean;
+package edu.scu.dreamTour.domain;
 
 import edu.scu.dreamTour.enums.SexEnum;
 import org.hibernate.validator.constraints.Email;
@@ -82,8 +82,8 @@ public class MyUser {
     /**
      * 持有Participant的引用
      */
-    @OneToOne(mappedBy = "myUser")
-    private Participant participant;
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "myUser")
+    private Set<Participant> participants;
 
     /**
      * 持有对发表的动态集合的引用
@@ -93,12 +93,51 @@ public class MyUser {
     private Set<Dynamic> dynamics;
 
     /**
+     * 对举办的活动的集合的持有
+     */
+    @OneToMany(cascade = {CascadeType.ALL},fetch = FetchType.LAZY,mappedBy = "holder")
+    private Set<TourActivity> tourActivities;
+
+    /**
+     * 对发送过的消息的集合的持有
+     */
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "sender")
+    private Set<Message> sendedMessages;
+
+    /**
+     * 对接收到的消息的集合的持有
+     */
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "receiver")
+    private Set<Message> receiveMessage;
+
+
+    /**
      * 无参构造
      */
     public MyUser(){
 
     }
 
+    /**
+     * 账号相等则返回true
+     * @param obj
+     * @return
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof MyUser){
+
+            MyUser user = (MyUser) obj;
+
+            if (user.getAccount().equals(account)){
+                return true;
+            }else {
+                return false;
+            }
+        }else {
+            return false;
+        }
+    }
 
     public Integer getAccount() {
         return account;
@@ -188,12 +227,12 @@ public class MyUser {
         isVolunteer = volunteer;
     }
 
-    public Participant getParticipant() {
-        return participant;
+    public Set<Participant> getParticipants() {
+        return participants;
     }
 
-    public void setParticipant(Participant participant) {
-        this.participant = participant;
+    public void setParticipants(Set<Participant> participants) {
+        this.participants = participants;
     }
 
     public Set<Dynamic> getDynamics() {
@@ -202,5 +241,51 @@ public class MyUser {
 
     public void setDynamics(Set<Dynamic> dynamics) {
         this.dynamics = dynamics;
+    }
+
+    public Set<TourActivity> getTourActivities() {
+        return tourActivities;
+    }
+
+    public void setTourActivities(Set<TourActivity> tourActivities) {
+        this.tourActivities = tourActivities;
+    }
+
+    public Set<Message> getSendedMessages() {
+        return sendedMessages;
+    }
+
+    public void setSendedMessages(Set<Message> sendedMessages) {
+        this.sendedMessages = sendedMessages;
+    }
+
+    public Set<Message> getReceiveMessage() {
+        return receiveMessage;
+    }
+
+    public void setReceiveMessage(Set<Message> receiveMessage) {
+        this.receiveMessage = receiveMessage;
+    }
+
+    @Override
+    public String toString() {
+        return "MyUser{" +
+                "account=" + account +
+                ", password='" + password + '\'' +
+                ", sex=" + sex +
+                ", nickName='" + nickName + '\'' +
+                ", birthDay=" + birthDay +
+                ", portraitImageFilePath='" + portraitImageFilePath + '\'' +
+                ", id_card='" + id_card + '\'' +
+                ", realName='" + realName + '\'' +
+                ", tel_number='" + tel_number + '\'' +
+                ", email='" + email + '\'' +
+                ", isVolunteer=" + isVolunteer +
+                ", participants=" + participants +
+                ", dynamics=" + dynamics +
+                ", tourActivities=" + tourActivities +
+                ", sendedMessages=" + sendedMessages +
+                ", receiveMessage=" + receiveMessage +
+                '}';
     }
 }

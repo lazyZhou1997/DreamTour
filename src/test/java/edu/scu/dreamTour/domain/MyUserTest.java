@@ -1,4 +1,4 @@
-package edu.scu.dreamTour.bean;
+package edu.scu.dreamTour.domain;
 
 import edu.scu.dreamTour.enums.SexEnum;
 import edu.scu.dreamTour.repository.MyUserRepository;
@@ -8,9 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.transaction.Transactional;
 import java.util.Date;
-
-import static org.junit.Assert.*;
 
 /**
  * @Author: 周秦春
@@ -25,6 +24,9 @@ public class MyUserTest {
     @Autowired
     private MyUserRepository myUserRepository;
 
+    /**
+     * 测试通过
+     */
     @Test
     public void testInsert(){
 
@@ -37,7 +39,11 @@ public class MyUserTest {
 
     }
 
+    /**
+     * 测试通过
+     */
     @Test
+    @Transactional
     public void testFindOne(){
         MyUser user = myUserRepository.findOne(2);
         System.out.println(user);

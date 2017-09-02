@@ -1,4 +1,4 @@
-package edu.scu.dreamTour.bean;
+package edu.scu.dreamTour.domain;
 
 import org.hibernate.annotations.Table;
 
@@ -8,13 +8,14 @@ import javax.persistence.Id;
 
 /**
  * @Author: 周秦春
- * @Description:
- * @Date: Create in 2017/8/21 22:43
+ * @Description: 用于保存活动图片路径
+ * @Date: Create in 2017/8/21 18:22
  * @ModifyBy:
  */
 @Entity
-@Table(appliesTo = "dynamic_image",comment = "动态中的图片")
-public class DynamicImage {
+@Table(appliesTo = "activity_image",comment = "保存活动图片的表")
+public class ActivityImage {
+
 
     /**
      * 图片ID，主键
@@ -24,22 +25,14 @@ public class DynamicImage {
     private Integer imageID;
 
     /**
-     * 动态ID，外键参考Dynamic.id
+     * 活动ID
      */
     private Integer id;
 
     /**
-     * 图片路径
+     * 活动图片路径
      */
     private String imageFile;
-
-    public Integer getImageID() {
-        return imageID;
-    }
-
-    public void setImageID(Integer imageID) {
-        this.imageID = imageID;
-    }
 
     public Integer getId() {
         return id;
@@ -55,5 +48,13 @@ public class DynamicImage {
 
     public void setImageFile(String imageFile) {
         this.imageFile = imageFile;
+    }
+
+    public Integer getImageID() {
+        return imageID;
+    }
+
+    public void setImageID(Integer imageID) {
+        this.imageID = imageID;
     }
 }

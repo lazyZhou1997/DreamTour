@@ -1,8 +1,7 @@
-package edu.scu.dreamTour.bean;
+package edu.scu.dreamTour.domain;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.Set;
 
 /**
  * @Author: 周秦春
@@ -22,6 +21,12 @@ public class DynamicComment {
     private Integer commentID;
 
     /**
+     * 评论者账号，外键参考MyUser.account
+     */
+    @Column(insertable = false,updatable = false)
+    private Integer account;
+
+    /**
      * 动态ID，外键参考Dynamic.id
      */
     private Integer id;
@@ -39,8 +44,8 @@ public class DynamicComment {
     /**
      * 动态评论者的引用持有
      */
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "account",unique = true)
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinColumn(name = "account")
     private MyUser myUser;
 
     public Integer getCommentID() {
@@ -81,5 +86,13 @@ public class DynamicComment {
 
     public void setMyUser(MyUser myUser) {
         this.myUser = myUser;
+    }
+
+    public Integer getAccount() {
+        return account;
+    }
+
+    public void setAccount(Integer account) {
+        this.account = account;
     }
 }

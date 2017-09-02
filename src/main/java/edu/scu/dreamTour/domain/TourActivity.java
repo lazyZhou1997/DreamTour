@@ -1,6 +1,7 @@
-package edu.scu.dreamTour.bean;
+package edu.scu.dreamTour.domain;
 
 import edu.scu.dreamTour.enums.ActivityStatusEnum;
+import edu.scu.dreamTour.enums.ActivityTypeEnum;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -51,10 +52,21 @@ public class TourActivity {
     private String content;
 
     /**
+     * 活动类型
+     */
+    private ActivityTypeEnum activityType;
+
+    /**
+     * 活动举办者的引用持有
+     */
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinColumn(name = "account")
+    private MyUser holder;
+
+    /**
      * 持有Participant的集合的引用
      */
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "tourActivities")
     private Set<Participant> participants;
 
     /**
@@ -63,6 +75,19 @@ public class TourActivity {
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "id")
     private Set<ActivityImage> activityImages;
+
+    /**
+     * 判断活动是否已经结束
+     * @return 如果已经结束，返回true
+     */
+    public boolean isComplete(){
+        //如果成功举办或者取消举办，返回true
+        if (activityStatus.equals(ActivityStatusEnum.CANCEL_HOLD)||activityStatus.equals(ActivityStatusEnum.HOLD__SUCCESS)){
+            return true;
+        }else{//否则返回false
+            return false;
+        }
+    }
 
     public Integer getId() {
         return id;
@@ -126,6 +151,22 @@ public class TourActivity {
 
     public void setActivityImages(Set<ActivityImage> activityImages) {
         this.activityImages = activityImages;
+    }
+
+    public MyUser getHolder() {
+        return holder;
+    }
+
+    public void setHolder(MyUser holder) {
+        this.holder = holder;
+    }
+
+    public ActivityTypeEnum getActivityType() {
+        return activityType;
+    }
+
+    public void setActivityType(ActivityTypeEnum activityType) {
+        this.activityType = activityType;
     }
 }
 

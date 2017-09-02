@@ -1,4 +1,4 @@
-package edu.scu.dreamTour.bean;
+package edu.scu.dreamTour.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -35,14 +35,14 @@ public class Subscribe implements Serializable{
      * 关注者对象持有
      */
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "subscriberAccount",referencedColumnName = "account")
+    @JoinColumn(name = "subscriberAccount",unique = true)
     private MyUser subscriber;
 
     /**
      * 被关注者对象持有
      */
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "account")
+    @JoinColumn(name = "account",unique = true)
     private MyUser user;
 
     public Integer getSubscriberAccount() {
