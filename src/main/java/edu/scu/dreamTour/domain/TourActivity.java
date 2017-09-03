@@ -25,6 +25,11 @@ public class TourActivity {
     private Integer id;
 
     /**
+     * 活动举办者账号，主键
+     */
+    private Integer account;
+
+    /**
      * 表示活动的当前状态，枚举
      */
     @Column(nullable = false)
@@ -59,8 +64,8 @@ public class TourActivity {
     /**
      * 活动举办者的引用持有
      */
-    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinColumn(name = "account")
+    @ManyToOne(cascade = CascadeType.REFRESH,fetch = FetchType.EAGER)
+    @JoinColumn(name = "account",insertable = false,updatable = false)
     private MyUser holder;
 
     /**
@@ -167,6 +172,14 @@ public class TourActivity {
 
     public void setActivityType(ActivityTypeEnum activityType) {
         this.activityType = activityType;
+    }
+
+    public Integer getAccount() {
+        return account;
+    }
+
+    public void setAccount(Integer account) {
+        this.account = account;
     }
 }
 

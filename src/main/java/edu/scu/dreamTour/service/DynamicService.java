@@ -47,6 +47,8 @@ public class DynamicService {
     @Transactional
     public void publishDynamic(Dynamic dynamic) {
 
+        //将删除状态设置为false
+        dynamic.setDynamicDelete(false);
         //保存动态信息
         Dynamic dynamicInDB = dynamicRepository.save(dynamic);
 
@@ -72,8 +74,33 @@ public class DynamicService {
     @Transactional
     public void commentDynamic(DynamicComment dynamicComment){
 
+        //设置评论状态为没删除
+        dynamicComment.setCommentDelete(false);
+
         dynamicCommentRepository.save(dynamicComment);
 
         return;
+    }
+
+    /**
+     * 删除动态，必须传入已经存在的动态id
+     * @param id
+     */
+    @Transactional
+    public void deleteDynamic(Integer id){
+
+        //更新数据库中的删除状态信息
+        dynamicRepository.updateDynamicDeleteById(true,id);
+
+    }
+
+    /**
+     * 删除评论，必须传入已经存在的评论id
+     * @param commentID
+     */
+    @Transactional
+    public void deleteComment(Integer commentID){
+
+        dynamicCommentRepository.updateCommentDeleteById(true,commentID);
     }
 }

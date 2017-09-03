@@ -67,10 +67,9 @@ public class TourActivityService {
     public void launchActivities(TourActivity tourActivity){
 
         //查看数据库中活动举办者是否已经开始举办其他活动，如果是，就不能再举办活动
-        //查看活动举办者
-        MyUser holder = tourActivity.getHolder();
         //数据库中查看举办者
-         holder = myUserRepository.findOne(holder.getAccount());
+        MyUser holder;
+        holder = myUserRepository.findOne(tourActivity.getAccount());
         //查看该举办者在数据库中举办的其他活动
         Set<TourActivity> tourActivities = holder.getTourActivities();
         //如果有其他未完成的活动,则抛出异常
@@ -83,7 +82,7 @@ public class TourActivityService {
 
         //设置活动状态为待审核
         tourActivity.setActivityStatus(ActivityStatusEnum.AUDITING);
-
+        System.out.println("活动账号"+tourActivity.getAccount());
         //添加该活动
         tourActivityRepository.save(tourActivity);
     }

@@ -22,14 +22,12 @@ public class Participant implements Serializable{
      *  参与者账号,主键，外键参MyUser.account
      */
     @Id
-    @Column(insertable = false,updatable = false)
     private Integer account;
 
     /**
      * 活动ID，主键，外键参考TourActivity.id
      */
     @Id
-    @Column(insertable = false,updatable = false)
     private Integer id;
 
     /**
@@ -50,15 +48,15 @@ public class Participant implements Serializable{
     /**
      * 持有MyUser引用
      */
-    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinColumn(name = "account")
+    @ManyToOne(cascade = CascadeType.REFRESH,fetch = FetchType.EAGER)
+    @JoinColumn(name = "account",insertable = false,updatable = false)
     private MyUser myUser;
 
     /**
      * 持有TourActivity引用
      */
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "id",insertable = false,updatable = false)
     private TourActivity tourActivities;
 
     public Participant(){

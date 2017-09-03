@@ -29,7 +29,7 @@ public class TourActivityServiceTest {
     private TourActivityService tourActivityService;
 
     /**
-     * 测试失败
+     * 测试通过
      * @throws Exception
      */
     @Test
@@ -41,6 +41,7 @@ public class TourActivityServiceTest {
         tourActivity.setHoldDate(new Date());
         tourActivity.setCreateDate(new Date());
         tourActivity.setContent("冲浪");
+        tourActivity.setAccount(2);
 
         MyUser user = new MyUser();
         user.setAccount(2);
@@ -49,7 +50,10 @@ public class TourActivityServiceTest {
         tourActivityService.launchActivities(tourActivity);
     }
 
-    //通过测试
+    /**
+     * 测试通过
+     * @throws Exception
+     */
     @Test
     public void findAllActivityWillHold() throws Exception {
 
@@ -57,13 +61,16 @@ public class TourActivityServiceTest {
 
     }
 
-    //通过测试
+    /**
+     * 测试通过
+     * @throws Exception
+     */
     @Test
     public void participateActivity() throws Exception {
         Participant participant = new Participant();
         participant.setJoinStatus(JoinStatusEnum.JOIN_SUCCESS);//测试
         participant.setAccount(3);
-        participant.setId(1);
+        participant.setId(2);
         participant.setJoinDate(new Date());
         participant.setPersonnelIntroduction("勤劳勇敢，任劳任怨");
 

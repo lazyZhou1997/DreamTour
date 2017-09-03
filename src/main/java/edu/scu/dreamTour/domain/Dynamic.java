@@ -37,6 +37,11 @@ public class Dynamic {
     private String content;
 
     /**
+     * 动态是否已经被删除
+     */
+    private boolean dynamicDelete;
+
+    /**
      * 表示动态中的图片的持有集合
      */
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
@@ -111,5 +116,13 @@ public class Dynamic {
 
     public void setThumbsUps(Set<ThumbsUp> thumbsUps) {
         this.thumbsUps = thumbsUps;
+    }
+
+    public boolean isDynamicDelete() {
+        return dynamicDelete;
+    }
+
+    public void setDynamicDelete(boolean dynamicDelete) {
+        this.dynamicDelete = dynamicDelete;
     }
 }

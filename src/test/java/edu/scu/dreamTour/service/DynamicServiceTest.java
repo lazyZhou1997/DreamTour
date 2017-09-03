@@ -3,6 +3,8 @@ package edu.scu.dreamTour.service;
 import edu.scu.dreamTour.domain.Dynamic;
 import edu.scu.dreamTour.domain.DynamicComment;
 import edu.scu.dreamTour.domain.DynamicImage;
+import edu.scu.dreamTour.repository.DynamicCommentRepository;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +30,13 @@ public class DynamicServiceTest {
     @Autowired
     private DynamicService dynamicService;
 
-    //测试通过
+    @Autowired
+    private DynamicCommentRepository dynamicCommentRepository;
+
+    /**
+     * 测试通过
+     * @throws Exception
+     */
     @Test
     public void publishDynamic() throws Exception {
 
@@ -51,6 +59,10 @@ public class DynamicServiceTest {
         dynamicService.publishDynamic(dynamic);
     }
 
+    /**
+     * 测试通过
+     * @throws Exception
+     */
     @Test
     public void commentDynamic() throws Exception {
 
@@ -63,5 +75,23 @@ public class DynamicServiceTest {
         dynamicService.commentDynamic(dynamicComment);
     }
 
+    /**
+     * 测试通过
+     * @throws Exception
+     */
+    @Test
+    public void deleteDynamic() throws Exception {
+        dynamicService.deleteDynamic(9);
+    }
 
+    /**
+     * 测试通过
+     * @throws Exception
+     */
+    @Test
+    public void deleteComment() throws Exception {
+
+        dynamicService.deleteComment(1);
+        Assert.assertEquals(dynamicCommentRepository.findOne(1).isCommentDelete(),true);
+    }
 }

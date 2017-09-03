@@ -23,7 +23,6 @@ public class DynamicComment {
     /**
      * 评论者账号，外键参考MyUser.account
      */
-    @Column(insertable = false,updatable = false)
     private Integer account;
 
     /**
@@ -42,10 +41,15 @@ public class DynamicComment {
     private Date commentDate;
 
     /**
+     * 评论是否被删除
+     */
+    private boolean commentDelete;
+
+    /**
      * 动态评论者的引用持有
      */
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinColumn(name = "account")
+    @JoinColumn(name = "account",insertable = false,updatable = false)
     private MyUser myUser;
 
     public Integer getCommentID() {
@@ -94,5 +98,13 @@ public class DynamicComment {
 
     public void setAccount(Integer account) {
         this.account = account;
+    }
+
+    public boolean isCommentDelete() {
+        return commentDelete;
+    }
+
+    public void setCommentDelete(boolean commentDelete) {
+        this.commentDelete = commentDelete;
     }
 }

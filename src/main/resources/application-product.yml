@@ -9,4 +9,6 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: true
+#自己的配置信息
+myProperties:
+  pageSize: 2 #分页大小
