@@ -1,5 +1,6 @@
 package edu.scu.dreamTour.domain;
 
+import edu.scu.dreamTour.domain.security.SysRole;
 import edu.scu.dreamTour.enums.SexEnum;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
@@ -110,6 +111,11 @@ public class MyUser {
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "receiver")
     private Set<Message> receiveMessage;
 
+    /**
+     * 用户角色的集合
+     */
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "myUser")
+    private Set<SysRole> sysRoles;
 
     /**
      * 无参构造
@@ -265,6 +271,14 @@ public class MyUser {
 
     public void setReceiveMessage(Set<Message> receiveMessage) {
         this.receiveMessage = receiveMessage;
+    }
+
+    public Set<SysRole> getSysRoles() {
+        return sysRoles;
+    }
+
+    public void setSysRoles(Set<SysRole> sysRoles) {
+        this.sysRoles = sysRoles;
     }
 
     @Override

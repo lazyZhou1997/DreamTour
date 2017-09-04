@@ -1,4 +1,4 @@
-package utils;
+package edu.scu.dreamTour.utils;
 
 import edu.scu.dreamTour.domain.TourActivity;
 import edu.scu.dreamTour.domain.result.PageResult;
