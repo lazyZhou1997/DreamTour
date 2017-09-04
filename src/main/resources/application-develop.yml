@@ -4,7 +4,7 @@ spring:
 # 数据库连接
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3366/dreamtour
+    url: jdbc:mysql://127.0.0.1:3306/dreamtour
     username: root
     password: root
   jpa:
