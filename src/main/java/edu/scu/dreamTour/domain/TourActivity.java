@@ -27,7 +27,7 @@ public class TourActivity {
     /**
      * 活动举办者账号，主键
      */
-    private Integer account;
+    private String account;
 
     /**
      * 表示活动的当前状态，枚举
@@ -174,11 +174,11 @@ public class TourActivity {
         this.activityType = activityType;
     }
 
-    public Integer getAccount() {
+    public String getAccount() {
         return account;
     }
 
-    public void setAccount(Integer account) {
+    public void setAccount(String account) {
         this.account = account;
     }
 }

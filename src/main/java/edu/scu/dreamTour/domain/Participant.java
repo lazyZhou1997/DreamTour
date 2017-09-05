@@ -22,7 +22,7 @@ public class Participant implements Serializable{
      *  参与者账号,主键，外键参MyUser.account
      */
     @Id
-    private Integer account;
+    private String account;
 
     /**
      * 活动ID，主键，外键参考TourActivity.id
@@ -94,11 +94,11 @@ public class Participant implements Serializable{
         this.tourActivities = tourActivities;
     }
 
-    public Integer getAccount() {
+    public String getAccount() {
         return account;
     }
 
-    public void setAccount(Integer account) {
+    public void setAccount(String account) {
         this.account = account;
     }
 
@@ -144,7 +144,14 @@ public class Participant implements Serializable{
 
     @Override
     public int hashCode() {
-        return account+id;
+        int result = getAccount() != null ? getAccount().hashCode() : 0;
+        result = 31 * result + (getId() != null ? getId().hashCode() : 0);
+        result = 31 * result + (getJoinDate() != null ? getJoinDate().hashCode() : 0);
+        result = 31 * result + (getPersonnelIntroduction() != null ? getPersonnelIntroduction().hashCode() : 0);
+        result = 31 * result + (getJoinStatus() != null ? getJoinStatus().hashCode() : 0);
+        result = 31 * result + (getMyUser() != null ? getMyUser().hashCode() : 0);
+        result = 31 * result + (getTourActivities() != null ? getTourActivities().hashCode() : 0);
+        return result;
     }
 }
 

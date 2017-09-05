@@ -10,6 +10,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @Date: Create in 2017/8/21 15:15
  * @ModifyBy:
  */
-public interface MyUserRepository extends JpaRepository<MyUser,Integer>{
+public interface MyUserRepository extends JpaRepository<MyUser,String>{
 
 }

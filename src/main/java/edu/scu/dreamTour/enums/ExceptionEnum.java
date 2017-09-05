@@ -13,6 +13,8 @@ public enum ExceptionEnum {
     HAS_OTHER_TO_HOLD(100,"已经有了其他待举办的活动"),
     HAS_PARTICIPATE_THIS_ACTIVITY(101,"已经申请参加了这个活动"),
     HOLDER_CANT_PARTICIPATE(102,"举办者不能申请参加该活动"),
+    //与用户相关异常
+    HAS_USER_THIS_ACCOUNT(110,"账户已经被使用"),
     ;
     /**
      * 异常代码

@@ -41,7 +41,7 @@ public class DynamicServiceTest {
     public void publishDynamic() throws Exception {
 
         Dynamic dynamic = new Dynamic();
-        dynamic.setAccount(1);
+        dynamic.setAccount("1");
         dynamic.setContent("今天去了云南");
         dynamic.setDate(new Date());
 
@@ -67,7 +67,7 @@ public class DynamicServiceTest {
     public void commentDynamic() throws Exception {
 
         DynamicComment dynamicComment = new DynamicComment();
-        dynamicComment.setAccount(1);
+        dynamicComment.setAccount("1");
         dynamicComment.setId(5);
         dynamicComment.setCommentDate(new Date());
         dynamicComment.setContent("幸福啊你");

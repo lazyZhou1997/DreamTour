@@ -23,8 +23,7 @@ public class MyUser {
      * 用户账号，从第1000开始增加，主键
      */
     @Id
-    @GeneratedValue
-    private Integer account;
+    private String account;
 
     /**
      * 用户密码
@@ -114,7 +113,7 @@ public class MyUser {
     /**
      * 用户角色的集合
      */
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "myUser")
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "myUser")
     private Set<SysRole> sysRoles;
 
     /**
@@ -145,11 +144,11 @@ public class MyUser {
         }
     }
 
-    public Integer getAccount() {
+    public String getAccount() {
         return account;
     }
 
-    public void setAccount(Integer account) {
+    public void setAccount(String account) {
         this.account = account;
     }
 

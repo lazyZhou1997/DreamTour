@@ -17,7 +17,7 @@ public class ThumbsUp implements Serializable{
      * 点赞人的账号，主键，外键参考MyUser.account
      */
     @Id
-    private Integer account;
+    private String account;
 
     /**
      * 点赞的动态ID，主键，外键参考Dynamic.id
@@ -32,11 +32,11 @@ public class ThumbsUp implements Serializable{
     @JoinColumn(name = "account",unique = true)
     private MyUser user;
 
-    public Integer getAccount() {
+    public String getAccount() {
         return account;
     }
 
-    public void setAccount(Integer account) {
+    public void setAccount(String account) {
         this.account = account;
     }
 

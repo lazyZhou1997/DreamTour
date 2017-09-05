@@ -18,13 +18,13 @@ public class Subscribe implements Serializable{
      * 关注者账号
      */
     @Id
-    private Integer subscriberAccount;
+    private String subscriberAccount;
 
     /**
      * 被关注者
      */
     @Id
-    private Integer account;
+    private String account;
 
     /**
      * 关注日期
@@ -45,19 +45,19 @@ public class Subscribe implements Serializable{
     @JoinColumn(name = "account",unique = true)
     private MyUser user;
 
-    public Integer getSubscriberAccount() {
+    public String getSubscriberAccount() {
         return subscriberAccount;
     }
 
-    public void setSubscriberAccount(Integer subscriberAccount) {
+    public void setSubscriberAccount(String subscriberAccount) {
         this.subscriberAccount = subscriberAccount;
     }
 
-    public Integer getAccount() {
+    public String getAccount() {
         return account;
     }
 
-    public void setAccount(Integer account) {
+    public void setAccount(String account) {
         this.account = account;
     }
 

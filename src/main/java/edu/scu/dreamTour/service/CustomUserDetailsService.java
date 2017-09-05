@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
 /**
  * @Author: 周秦春
@@ -12,6 +13,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
  * @Date: Create in 2017/9/4 20:00
  * @ModifyBy:
  */
+@Service
 public class CustomUserDetailsService implements UserDetailsService{
 
     /**
@@ -32,8 +34,9 @@ public class CustomUserDetailsService implements UserDetailsService{
             throw new UsernameNotFoundException("UserName " + username + " not found");
         }
 
-        // FIXME
-        aa
-        return null;
+        // SecurityUser实现UserDetails并将SysUser的account映射为username
+        SecurityUser securityUser = new SecurityUser(user);
+
+        return securityUser;
     }
 }

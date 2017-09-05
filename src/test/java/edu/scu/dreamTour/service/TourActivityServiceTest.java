@@ -41,10 +41,10 @@ public class TourActivityServiceTest {
         tourActivity.setHoldDate(new Date());
         tourActivity.setCreateDate(new Date());
         tourActivity.setContent("冲浪");
-        tourActivity.setAccount(2);
+        tourActivity.setAccount("2");
 
         MyUser user = new MyUser();
-        user.setAccount(2);
+        user.setAccount("2");
         tourActivity.setHolder(user);
 
         tourActivityService.launchActivities(tourActivity);
@@ -69,13 +69,13 @@ public class TourActivityServiceTest {
     public void participateActivity() throws Exception {
         Participant participant = new Participant();
         participant.setJoinStatus(JoinStatusEnum.JOIN_SUCCESS);//测试
-        participant.setAccount(3);
+        participant.setAccount("3");
         participant.setId(2);
         participant.setJoinDate(new Date());
         participant.setPersonnelIntroduction("勤劳勇敢，任劳任怨");
 
         MyUser user = new MyUser();
-        user.setAccount(3);
+        user.setAccount("3");
 
         participant.setMyUser(user);
 
