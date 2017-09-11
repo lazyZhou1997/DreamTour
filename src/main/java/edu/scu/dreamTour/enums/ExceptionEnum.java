@@ -15,7 +15,7 @@ public enum ExceptionEnum {
     //与用户相关异常
     HAS_USER_THIS_ACCOUNT(110,"账户已经被使用"),
     //成功
-    SUCCESS(200,"登录成功"),
+    SUCCESS(200,"成功"),
     LOGIN_FAIL(201,"登录失败"),
     ;
     /**

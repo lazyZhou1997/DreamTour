@@ -33,14 +33,14 @@ public class Message {
     /**
      * 消息发送者对象引用持有
      */
-    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "sendAccount",referencedColumnName = "account")
     private MyUser sender;
 
     /**
      * 消息接受者对象引用持有
      */
-    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "receiveAccount",referencedColumnName = "account")
     private MyUser receiver;
 

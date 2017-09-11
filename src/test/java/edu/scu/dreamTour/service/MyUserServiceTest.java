@@ -34,7 +34,7 @@ public class MyUserServiceTest {
     }
 
     @Test
-    public void saveMyUser() throws Exception {
+    public void register() throws Exception {
 
         MyUser myUser = new MyUser();
         myUser.setAccount("400");
@@ -44,7 +44,7 @@ public class MyUserServiceTest {
         myUser.setId_card("511112199702086017");
         myUser.setSex(SexEnum.MALE);
 
-        myUserService.saveMyUser(myUser);
+        myUserService.register(myUser);
     }
 
 }

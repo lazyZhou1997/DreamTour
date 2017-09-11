@@ -42,11 +42,11 @@ public class MyUserService {
     }
 
     /**
-     * 将穿入的用户类信息保存到数据库中
+     * 注册
      * @param myUser 用户
      */
     @Transactional
-    public void saveMyUser(MyUser myUser){
+    public void register(MyUser myUser){
 
         //看看用户名是否已经存在
         if (myUserRepository.findOne(myUser.getAccount())!=null){

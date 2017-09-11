@@ -6,11 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.transaction.Transactional;
-
 /**
  * @Author: 周秦春
- * @Description:
+ * @Description: 处理登录相关的http请求
  * @Date: Create in 2017/9/5 10:28
  * @ModifyBy:
  */
