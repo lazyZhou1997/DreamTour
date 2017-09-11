@@ -1,5 +1,7 @@
 package edu.scu.dreamTour.controller;
 
+import edu.scu.dreamTour.domain.result.Result;
+import edu.scu.dreamTour.enums.ExceptionEnum;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,14 +17,29 @@ import javax.transaction.Transactional;
 @RestController
 public class LoginController {
 
-    @PostMapping(value = "/")
-    public String login(){
-        return "成功";
+    /**
+     * 登录成功的返回结果
+     * @return
+     */
+    @GetMapping(value = "/")
+    public Result loginSuccess(){
+        Result result = new Result();
+        result.setCode(ExceptionEnum.SUCCESS.getCode());
+        result.setMessage(ExceptionEnum.SUCCESS.getMessgae());
+        return result;
+
     }
 
-    @PostMapping(value = "/register")
-    public String register(){
+    /**
+     * 登录失败的返回结果
+     * @return
+     */
+    @PostMapping(value = "/fail")
+    public Result loginFail(){
 
-        return "注册";
+        Result result = new Result();
+        result.setCode(ExceptionEnum.LOGIN_FAIL.getCode());
+        result.setMessage(ExceptionEnum.LOGIN_FAIL.getMessgae());
+        return result;
     }
 }
