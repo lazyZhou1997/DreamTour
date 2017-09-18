@@ -94,6 +94,5 @@ public class MessageController {
 
         //构造返回结果
         return new Result(ExceptionEnum.SUCCESS,null);
-
     }
 }
