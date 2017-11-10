@@ -36,4 +36,8 @@ public class MessageController {
 
         return result;
     }
+
+    /**
+     * 获取所有消息
+     */
 }
