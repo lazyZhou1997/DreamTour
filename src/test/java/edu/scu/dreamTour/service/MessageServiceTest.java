@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Date;
+import java.util.Set;
 
 import static org.junit.Assert.*;
 
@@ -47,4 +48,27 @@ public class MessageServiceTest {
         messageService.sendMessage(message);
     }
 
+    /**
+     * 测试通过
+     * @throws Exception
+     */
+    @Test
+    public void getAllMessageNotRead() throws Exception {
+
+        Set<Message> messages = messageService.getAllMessageNotRead("400");
+
+        for (Message message:
+             messages) {
+            System.out.println(message.toString());
+        }
+    }
+
+    /**
+     *
+     * @throws Exception
+     */
+    @Test
+    public void readMessage() throws Exception {
+        messageService.readMessage(1);;
+    }
 }
