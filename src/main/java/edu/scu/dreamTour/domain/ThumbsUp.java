@@ -55,4 +55,25 @@ public class ThumbsUp implements Serializable{
     public void setUser(MyUser user) {
         this.user = user;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ThumbsUp thumbsUp = (ThumbsUp) o;
+
+        if (getAccount() != null ? !getAccount().equals(thumbsUp.getAccount()) : thumbsUp.getAccount() != null)
+            return false;
+        if (getId() != null ? !getId().equals(thumbsUp.getId()) : thumbsUp.getId() != null) return false;
+        return getUser() != null ? getUser().equals(thumbsUp.getUser()) : thumbsUp.getUser() == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getAccount() != null ? getAccount().hashCode() : 0;
+        result = 31 * result + (getId() != null ? getId().hashCode() : 0);
+        result = 31 * result + (getUser() != null ? getUser().hashCode() : 0);
+        return result;
+    }
 }
