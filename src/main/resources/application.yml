@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: product
+    active: develop
   #开启懒加载
   jpa:
     open-in-view: true
