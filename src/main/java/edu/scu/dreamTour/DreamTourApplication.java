@@ -8,5 +8,6 @@ public class DreamTourApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(DreamTourApplication.class, args);
+
 	}
 }

@@ -23,7 +23,7 @@ public class DynamicComment {
     /**
      * 评论者账号，外键参考MyUser.account
      */
-    private Integer account;
+    private String account;
 
     /**
      * 动态ID，外键参考Dynamic.id
@@ -92,11 +92,11 @@ public class DynamicComment {
         this.myUser = myUser;
     }
 
-    public Integer getAccount() {
+    public String getAccount() {
         return account;
     }
 
-    public void setAccount(Integer account) {
+    public void setAccount(String account) {
         this.account = account;
     }
 

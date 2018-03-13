@@ -1,5 +1,7 @@
 package edu.scu.dreamTour.domain.result;
 
+import edu.scu.dreamTour.enums.ExceptionEnum;
+
 /**
  * @Author: 周秦春
  * @Description: 封装返回结果的类,Http访问返回的最外层
@@ -22,6 +24,22 @@ public class Result {
      * 返回的具体内容
      */
     private Object data;
+
+    /**
+     * 无参构造
+     */
+    public Result(){}
+
+    /**
+     * 带有两个参数的构造函数
+     * @param exceptionEnum 返回信息
+     * @param data 传输的数据
+     */
+    public Result(ExceptionEnum exceptionEnum,Object data){
+        this.code = exceptionEnum.getCode();
+        this.message = exceptionEnum.getMessgae();
+        this.data = data;
+    }
 
     public Integer getCode() {
         return code;

@@ -103,4 +103,5 @@ public class DynamicService {
 
         dynamicCommentRepository.updateCommentDeleteById(true,commentID);
     }
+
 }

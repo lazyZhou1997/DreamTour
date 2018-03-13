@@ -45,7 +45,7 @@ public class MyUserTest {
     @Test
     @Transactional
     public void testFindOne(){
-        MyUser user = myUserRepository.findOne(2);
+        MyUser user = myUserRepository.findOne("2");
         System.out.println(user);
     }
 }

@@ -1,5 +1,7 @@
 package edu.scu.dreamTour.domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -21,8 +23,19 @@ public class Message {
     private Integer id;
 
     /**
+     * 发送者账号
+     */
+    private String sendAccount;
+
+    /**
+     * 接收者账号
+     */
+    private String receiveAccount;
+
+    /**
      * 消息的发送时间
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")//时间转化格式
     private Date sendDate;
 
     /**
@@ -31,17 +44,22 @@ public class Message {
     private String content;
 
     /**
+     * 消息是否已经被阅读
+     */
+    private boolean readed;
+
+    /**
      * 消息发送者对象引用持有
      */
-    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinColumn(name = "sendAccount",referencedColumnName = "account")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "sendAccount",referencedColumnName = "account",insertable = false,updatable = false)
     private MyUser sender;
 
     /**
      * 消息接受者对象引用持有
      */
-    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinColumn(name = "receiveAccount",referencedColumnName = "account")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "receiveAccount",referencedColumnName = "account",insertable = false,updatable = false)
     private MyUser receiver;
 
     public Integer getId() {
@@ -82,5 +100,39 @@ public class Message {
 
     public void setReceiver(MyUser receiver) {
         this.receiver = receiver;
+    }
+
+    public boolean isReaded() {
+        return readed;
+    }
+
+    public void setReaded(boolean readed) {
+        this.readed = readed;
+    }
+
+    public String getSendAccount() {
+        return sendAccount;
+    }
+
+    public void setSendAccount(String sendAccount) {
+        this.sendAccount = sendAccount;
+    }
+
+    public String getReceiveAccount() {
+        return receiveAccount;
+    }
+
+    public void setReceiveAccount(String receiveAccount) {
+        this.receiveAccount = receiveAccount;
+    }
+
+    @Override
+    public String toString() {
+        return "Message{" +
+                "id=" + id +
+                ", sendDate=" + sendDate +
+                ", content='" + content + '\'' +
+                ", readed=" + readed +
+                '}';
     }
 }

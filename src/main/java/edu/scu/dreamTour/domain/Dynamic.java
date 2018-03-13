@@ -24,7 +24,7 @@ public class Dynamic {
     /**
      * 发表动态的用户，外键关联MyUser.account
      */
-    private Integer account;
+    private String account;
 
     /**
      * 表示动态的发表日期
@@ -70,11 +70,11 @@ public class Dynamic {
         this.id = id;
     }
 
-    public Integer getAccount() {
+    public String getAccount() {
         return account;
     }
 
-    public void setAccount(Integer account) {
+    public void setAccount(String account) {
         this.account = account;
     }
 

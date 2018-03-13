@@ -17,7 +17,7 @@ public class ThumbsUp implements Serializable{
      * 点赞人的账号，主键，外键参考MyUser.account
      */
     @Id
-    private Integer account;
+    private String account;
 
     /**
      * 点赞的动态ID，主键，外键参考Dynamic.id
@@ -32,11 +32,11 @@ public class ThumbsUp implements Serializable{
     @JoinColumn(name = "account",unique = true)
     private MyUser user;
 
-    public Integer getAccount() {
+    public String getAccount() {
         return account;
     }
 
-    public void setAccount(Integer account) {
+    public void setAccount(String account) {
         this.account = account;
     }
 
@@ -54,5 +54,26 @@ public class ThumbsUp implements Serializable{
 
     public void setUser(MyUser user) {
         this.user = user;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ThumbsUp thumbsUp = (ThumbsUp) o;
+
+        if (getAccount() != null ? !getAccount().equals(thumbsUp.getAccount()) : thumbsUp.getAccount() != null)
+            return false;
+        if (getId() != null ? !getId().equals(thumbsUp.getId()) : thumbsUp.getId() != null) return false;
+        return getUser() != null ? getUser().equals(thumbsUp.getUser()) : thumbsUp.getUser() == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getAccount() != null ? getAccount().hashCode() : 0;
+        result = 31 * result + (getId() != null ? getId().hashCode() : 0);
+        result = 31 * result + (getUser() != null ? getUser().hashCode() : 0);
+        return result;
     }
 }
